@@ -42,6 +42,11 @@ def generate_metadata(raw_song):
         meta_tags[u'genre'] = titlecase(artist['genres'][0])
     except IndexError:
         meta_tags[u'genre'] = None
+    
+    try:
+        meta_tags[u'copyright'] = album['copyrights'][0]['text']
+    except IndexError:
+        meta_tags[u'copyright']     = 'Unavailable'
 
     meta_tags[u'release_date'] = album['release_date']
     meta_tags[u'copyright'] = album['copyrights'][0]['text']
